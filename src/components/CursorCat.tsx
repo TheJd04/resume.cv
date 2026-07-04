@@ -31,7 +31,7 @@ function direction(dx: number, dy: number): string {
 }
 
 const TILE = 32;
-const SPEED = 3;
+const SPEED = 6;
 
 export default function CursorCat() {
   const elRef    = useRef<HTMLDivElement>(null);
@@ -122,7 +122,7 @@ export default function CursorCat() {
         top: 100,
         zIndex: 99999,
         pointerEvents: 'none',
-        transform: 'scale(2)',
+        transform: 'scale(1.25)',
         transformOrigin: 'top left',
       }}
     />

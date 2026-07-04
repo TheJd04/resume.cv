@@ -1,11 +1,10 @@
-import React from 'react';
-import { motion } from 'motion/react';
 import { 
   educationData, 
   certificationsList, 
-  skillsByGroup 
+  skillsByGroup,
+  LINKEDIN_CERTS_URL
 } from '../data';
-import { Award, GraduationCap, Layers } from 'lucide-react';
+import { Award, GraduationCap, Layers, ExternalLink } from 'lucide-react';
 
 
 
@@ -58,12 +57,18 @@ export default function SkillsRadar() {
 
           {/* Certifications Block */}
           <div className="space-y-4" id="certifications-block">
-            <h3 className="font-mono text-xs text-muted-foreground tracking-widest uppercase flex items-center gap-2">
-              <Award size={15} /> Professional Credentials
-            </h3>
+            <div className="flex items-center justify-between">
+              <h3 className="font-mono text-xs text-muted-foreground tracking-widest uppercase flex items-center gap-2">
+                <Award size={15} /> Professional Credentials
+              </h3>
+              <span className="font-mono text-[10px] text-muted-foreground/50 uppercase tracking-widest">
+                20+ total
+              </span>
+            </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="certs-grid">
-              {certificationsList.map((cert, index) => (
+              {/* Show first 6 featured certs */}
+              {certificationsList.slice(0, 6).map((cert, index) => (
                 <div 
                   key={index} 
                   className="liquid-glass rounded-xl p-4 border border-white/10 bg-black/45 flex items-center gap-3"
@@ -72,11 +77,37 @@ export default function SkillsRadar() {
                   <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-foreground shrink-0 select-none">
                     <Award size={16} />
                   </div>
-                  <span className="text-xs text-foreground/95 font-medium leading-tight select-text">
-                    {cert}
-                  </span>
+                  <div className="min-w-0">
+                    <span className="text-xs text-foreground/95 font-medium leading-tight block select-text">
+                      {cert.name}
+                    </span>
+                    <span className="text-[10px] text-muted-foreground/60 font-mono mt-0.5 block">
+                      {cert.issuer}
+                    </span>
+                  </div>
                 </div>
               ))}
+
+              {/* View All card */}
+              <a
+                href={LINKEDIN_CERTS_URL}
+                target="_blank"
+                rel="noreferrer"
+                id="cert-view-all"
+                className="liquid-glass rounded-xl p-4 border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/25 transition-all duration-300 flex items-center gap-3 group cursor-pointer"
+              >
+                <div className="w-8 h-8 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center text-foreground shrink-0 group-hover:scale-110 transition-transform">
+                  <ExternalLink size={15} />
+                </div>
+                <div className="min-w-0">
+                  <span className="text-xs text-foreground font-semibold block leading-tight">
+                    View All 20+ Certifications
+                  </span>
+                  <span className="text-[10px] text-muted-foreground/60 font-mono mt-0.5 block group-hover:text-white/60 transition-colors">
+                    Opens LinkedIn →
+                  </span>
+                </div>
+              </a>
             </div>
           </div>
 

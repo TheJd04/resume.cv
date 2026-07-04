@@ -213,12 +213,17 @@ export const educationData = {
 };
 
 export const certificationsList = [
-  'AWS Certified Data Engineer – Associate',
-  'Oracle Cloud OCI Associate',
-  'Complete SQL Bootcamp',
-  'Data Analyst Professional Certificate',
-  'AI Agents Certification – IIT Jammu'
+  { name: 'AWS Certified Data Engineer – Associate', issuer: 'Amazon Web Services' },
+  { name: 'Oracle Cloud OCI Associate', issuer: 'Oracle' },
+  { name: 'Data Analyst Professional Certificate', issuer: 'Google / Coursera' },
+  { name: 'AI Agents Certification', issuer: 'IIT Jammu' },
+  { name: 'Complete SQL Bootcamp', issuer: 'Udemy' },
+  { name: 'Python for Data Science & AI', issuer: 'IBM / Coursera' },
+  { name: 'Machine Learning Specialization', issuer: 'DeepLearning.AI' },
+  { name: 'Docker & Kubernetes: The Practical Guide', issuer: 'Udemy' },
 ];
+
+export const LINKEDIN_CERTS_URL = 'https://www.linkedin.com/in/jagjeet-singh-dhillon-022b822b7/details/certifications/';
 
 // Keeping compatibility with Navbar and default tabs, while redirecting them to use our new rich content
 export const tabDataList: TabData[] = [

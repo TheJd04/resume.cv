@@ -59,7 +59,7 @@ export default function CursorCat() {
 
     function loop() {
       tickRef.current++;
-      const anim = tickRef.current % 8 === 0;
+      const anim = tickRef.current % 14 === 0;
       if (anim) frameRef.current++;
 
       const { x: cx, y: cy } = posRef.current;

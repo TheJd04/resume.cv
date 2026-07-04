@@ -31,7 +31,7 @@ function direction(dx: number, dy: number): string {
 }
 
 const TILE = 32;
-const SPEED = 6;
+const SPEED = 4;
 
 export default function CursorCat() {
   const elRef    = useRef<HTMLDivElement>(null);

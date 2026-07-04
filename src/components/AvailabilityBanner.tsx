@@ -43,7 +43,7 @@ export default function AvailabilityBanner() {
 
             <div className="hidden sm:flex items-center gap-1.5 text-muted-foreground">
               <MapPin size={11} />
-              <span className="font-mono text-[11px] whitespace-nowrap">Mohali · Delhi NCR · Anywhere</span>
+              <span className="font-mono text-[11px] whitespace-nowrap">Mohali · Delhi NCR · Remote / India</span>
             </div>
 
             {/* Dismiss */}

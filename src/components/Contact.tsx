@@ -5,7 +5,6 @@ import {
   Send, 
   Cpu, 
   CheckCircle2, 
-  Terminal, 
   Linkedin, 
   Github, 
   Code, 
@@ -17,10 +16,7 @@ import {
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [terminalLogs, setTerminalLogs] = useState<string[]>([
-    'SESSION INITIALIZED', 
-    'STANDBY FOR PORT CONNECTION...'
-  ]);
+
   const [isTransmitting, setIsTransmitting] = useState(false);
   const [isSent, setIsSent] = useState(false);
 
@@ -29,21 +25,8 @@ export default function Contact() {
     if (!formData.name || !formData.email || !formData.message) return;
     
     setIsTransmitting(true);
-    setTerminalLogs(prev => [
-      ...prev, 
-      `PREPARING PROTOCOL FOR: ${formData.name.toUpperCase()}`, 
-      'ESTABLISHING ENCRYPTED SHELL...'
-    ]);
-
     setTimeout(() => {
-      setTerminalLogs(prev => [
-        ...prev, 
-        'CONNECTING ROUTE TO: dhillonjd.04@gmail.com', 
-        'TRANSMITTING ENCRYPTED PAYLOAD...'
-      ]);
-      
       setTimeout(() => {
-        setTerminalLogs(prev => [...prev, 'TRANSMISSION COMPLETE. DISPATCH EXECUTED!']);
         setIsTransmitting(false);
         setIsSent(true);
       }, 1000);
@@ -207,35 +190,8 @@ export default function Contact() {
           </AnimatePresence>
         </div>
 
-        {/* Diagnostic Terminal & Social channels (5 Cols) */}
+        {/* Social channels */}
         <div className="lg:col-span-5 flex flex-col justify-between gap-6" id="contact-details-column">
-          {/* Terminal Box */}
-          <div className="liquid-glass rounded-2xl p-6 border border-white/10 bg-black/40 font-mono text-xs flex flex-col justify-between h-64" id="diagnostic-terminal">
-            <div className="space-y-2">
-              <div className="flex items-center justify-between border-b border-white/10 pb-2 mb-3">
-                <span className="text-muted-foreground font-semibold flex items-center gap-2">
-                  <Terminal size={14} /> DIAGNOSTIC SHELL LOG
-                </span>
-                <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-              </div>
-              <div className="space-y-1.5 select-none text-[11px]" id="terminal-lines">
-                {terminalLogs.map((log, i) => (
-                  <div key={i} className="text-white/60">
-                    <span className="text-white/30 mr-2">&gt;</span>
-                    {log}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="border-t border-white/5 pt-3 mt-4 space-y-1 text-[10px] text-muted-foreground/50 select-text">
-              <div>HOST NODE: github.com/TheJd04</div>
-              <div>LOCALE PORT: MOHALI_IN</div>
-              <div>PROTOCOL STANDARD: SSL_TLS_v1.3</div>
-            </div>
-          </div>
-
-          {/* Social connections capsule */}
           <div className="liquid-glass rounded-2xl p-6 border border-white/10 bg-black/40 space-y-4" id="social-quick-links">
             <h4 className="font-mono text-xs text-muted-foreground font-semibold uppercase tracking-wider border-b border-white/10 pb-2">
               SECURE ACCESS ENDPOINTS

@@ -213,14 +213,15 @@ export const educationData = {
 };
 
 export const certificationsList = [
-  { name: 'AWS Certified Data Engineer – Associate', issuer: 'Amazon Web Services' },
+  { name: 'AWS Certified Data Engineer Associate 2026', issuer: 'Udemy' },
+  { name: 'Ultimate RAG Bootcamp — LangChain, LangGraph & LangSmith', issuer: 'Udemy' },
+  { name: 'Decoding DevOps – From Basics to Advanced with AI', issuer: 'Udemy' },
+  { name: 'The Complete Prompt Engineering for AI Bootcamp', issuer: 'Udemy' },
+  { name: 'Data Analyst: Professional Certificate in Data Analysis', issuer: 'Udemy' },
+  { name: 'SQL Boot Camp', issuer: 'Udemy' },
+  { name: 'The Git & GitHub Bootcamp', issuer: 'Udemy' },
   { name: 'Oracle Cloud OCI Associate', issuer: 'Oracle' },
-  { name: 'Data Analyst Professional Certificate', issuer: 'Google / Coursera' },
   { name: 'AI Agents Certification', issuer: 'IIT Jammu' },
-  { name: 'Complete SQL Bootcamp', issuer: 'Udemy' },
-  { name: 'Python for Data Science & AI', issuer: 'IBM / Coursera' },
-  { name: 'Machine Learning Specialization', issuer: 'DeepLearning.AI' },
-  { name: 'Docker & Kubernetes: The Practical Guide', issuer: 'Udemy' },
 ];
 
 export const LINKEDIN_CERTS_URL = 'https://www.linkedin.com/in/jagjeet-singh-dhillon-022b822b7/details/certifications/';

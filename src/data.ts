@@ -147,6 +147,20 @@ export const projectsData: ProjectData[] = [
       'Created a highly responsive interface with instant scored rankings via a Streamlit dashboard.'
     ],
     githubUrl: 'https://github.com/TheJd04'
+  },
+  {
+    id: 'vaani',
+    title: 'Vaani',
+    subtitle: 'Local-First Voice Dictation Tool',
+    year: '2025',
+    tech: ['Python', 'faster-whisper', 'Groq API', 'PyInstaller', 'HTML/CSS/JS'],
+    highlights: [
+      'Shipped a local-first Windows dictation app — hold a hotkey anywhere on the OS, speak, release, and the transcribed text lands directly at the cursor.',
+      'Integrated faster-whisper for fully offline transcription and optional Groq cloud API for faster turnaround, with zero audio leaving the machine in local mode.',
+      'Packaged as a standalone Inno Setup installer (no Python required) distributed via GitHub Releases, with a self-contained Netlify landing page.'
+    ],
+    liveUrl: 'https://vaani-voice-app.netlify.app/',
+    githubUrl: 'https://github.com/TheJd04/Vanni-'
   }
 ];
 
@@ -277,6 +291,7 @@ export const tabDataList: TabData[] = [
         isList: true,
         content: [
           'DualDesk App (Live & Shipped)',
+          'Vaani — Voice Dictation (Live & Shipped)',
           'BioPulse Elite (AI Industrial Dash)',
           'AI-Powered Job Alert (n8n & Scraping)',
           'Personalized Career Coach (AI Agent)',

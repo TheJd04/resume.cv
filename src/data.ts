@@ -118,6 +118,20 @@ export const projectsData: ProjectData[] = [
     githubUrl: 'https://github.com/TheJd04/DualDesk'
   },
   {
+    id: 'vaani',
+    title: 'Vaani',
+    subtitle: 'Local-First Voice Dictation Tool',
+    year: '2025',
+    tech: ['Python', 'faster-whisper', 'Groq API', 'PyInstaller', 'HTML/CSS/JS'],
+    highlights: [
+      'Shipped a local-first Windows dictation app — hold a hotkey anywhere on the OS, speak, release, and the transcribed text lands directly at the cursor.',
+      'Increases typing efficiency by up to 300% (approx. 120 WPM dictation vs 40 WPM typing) by allowing users to use voice-to-text instead of manually typing.',
+      'Integrated faster-whisper for fully offline transcription and optional Groq cloud API for faster turnaround, with zero audio leaving the machine in local mode.'
+    ],
+    liveUrl: 'https://vaani-voice-app.netlify.app/',
+    githubUrl: 'https://github.com/TheJd04/Vanni-'
+  },
+  {
     id: 'biopulse',
     title: 'BioPulse Elite',
     subtitle: 'AI Industrial Dashboard',
@@ -176,20 +190,6 @@ export const projectsData: ProjectData[] = [
       'Cuts manual recruiter screening time by over 70%, allowing instant scored rankings of candidates via a responsive Streamlit dashboard.'
     ],
     githubUrl: 'https://github.com/TheJd04'
-  },
-  {
-    id: 'vaani',
-    title: 'Vaani',
-    subtitle: 'Local-First Voice Dictation Tool',
-    year: '2025',
-    tech: ['Python', 'faster-whisper', 'Groq API', 'PyInstaller', 'HTML/CSS/JS'],
-    highlights: [
-      'Shipped a local-first Windows dictation app — hold a hotkey anywhere on the OS, speak, release, and the transcribed text lands directly at the cursor.',
-      'Increases typing efficiency by up to 300% (approx. 120 WPM dictation vs 40 WPM typing) by allowing users to use voice-to-text instead of manually typing.',
-      'Integrated faster-whisper for fully offline transcription and optional Groq cloud API for faster turnaround, with zero audio leaving the machine in local mode.'
-    ],
-    liveUrl: 'https://vaani-voice-app.netlify.app/',
-    githubUrl: 'https://github.com/TheJd04/Vanni-'
   }
 ];
 

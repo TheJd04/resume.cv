@@ -76,6 +76,20 @@ export const socialLinks: SocialLink[] = [
 // Jagjeet's real-world projects
 export const projectsData: ProjectData[] = [
   {
+    id: 'ragchatbot',
+    title: 'Enterprise RAG Assistant',
+    subtitle: 'Full-Stack AI Chatbot with Citation & Voice',
+    year: '2026',
+    tech: ['Next.js 15', 'FastAPI', 'Python 3.11', 'ChromaDB', 'SQLite', 'Tailwind CSS'],
+    highlights: [
+      'Built a full-stack Enterprise RAG Assistant with real-time SSE streaming, voice synthesis, and a citation inspector drawer.',
+      'Developed a backend powered by FastAPI with ChromaDB vector search and SQLite persistence, deployed on Render.',
+      'Designed a universal cyberpunk dark theme frontend in Next.js 15, deployed on Vercel.'
+    ],
+    liveUrl: 'https://frontend-the-jd.vercel.app/dashboard/chat',
+    githubUrl: 'https://github.com/TheJd04/Rag--chat-bot-'
+  },
+  {
     id: 'gharsuraksha',
     title: 'GharSuraksha',
     subtitle: 'AI Home Inventory & Insurance Intelligence',

@@ -165,6 +165,7 @@ export const projectsData: ProjectData[] = [
       'Built a multi-agent AI consultant system using CrewAI that analyzes user resumes, maps skills to active market demand, and constructs personalized career roadmaps.',
       'Accelerates career planning by 10x, generating actionable, data-driven roadmaps in seconds instead of hours of manual research.'
     ],
+    liveUrl: 'https://personalized-career-coach-lovat.vercel.app/',
     githubUrl: 'https://github.com/TheJd04/Personalized-Career-Coach'
   },
   {

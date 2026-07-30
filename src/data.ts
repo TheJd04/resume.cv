@@ -189,7 +189,8 @@ export const projectsData: ProjectData[] = [
       'Automated candidate shortlisting by building an NLP pipeline that ranks and filters resumes against job descriptions.',
       'Cuts manual recruiter screening time by over 70%, allowing instant scored rankings of candidates via a responsive Streamlit dashboard.'
     ],
-    githubUrl: 'https://github.com/TheJd04'
+    liveUrl: 'https://resume-screening-app-nine.vercel.app',
+    githubUrl: 'https://github.com/TheJd04/Resume-screening-App'
   }
 ];
 

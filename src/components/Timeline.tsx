@@ -52,7 +52,7 @@ const internships: Internship[] = [
     role: 'Data & IT Engineering Intern',
     company: 'Pancarbo Greenfuels Pvt. Ltd.',
     location: 'Mohali, India',
-    period: 'Mar 2026 – Jun 2026',
+    period: 'Mar 2026 – Jul 2026 (4-Month Training)',
     highlights: [
       'Designed automated Python/Pandas ETL pipelines replacing manual data consolidation, cutting weekly reporting time.',
       'Optimized SQL queries and added Python data-validation checks, improving data accuracy for business decisions.',

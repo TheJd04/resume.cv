@@ -204,7 +204,7 @@ export const experienceDataList: ExperienceData[] = [
     role: 'Data & IT Engineering Intern',
     company: 'Pancarbo Greenfuels Pvt. Ltd.',
     location: 'Mohali, India',
-    period: 'Mar 2026 – Jun 2026',
+    period: 'Mar 2026 – Jul 2026 (4-Month Training)',
     highlights: [
       'Designed automated Python/Pandas ETL pipelines that replaced a manual data consolidation process, cutting weekly reporting preparation time.',
       'Optimized SQL queries and added Python data-validation checks, improving data accuracy and ensuring consistent, trustworthy inputs for business decision-making.'
@@ -352,7 +352,7 @@ export const tabDataList: TabData[] = [
     widgets: {
       about: {
         title: 'DATA & IT INTERN',
-        content: 'Pancarbo Greenfuels Pvt. Ltd. (Mar - Jun 2026). Designed automated Pandas ETL pipelines replacing manual processes, cutting weekly reporting preparation, and optimizing MySQL database schemas.'
+        content: 'Pancarbo Greenfuels Pvt. Ltd. (Mar – Jul 2026, 4-Month Training). Designed automated Pandas ETL pipelines replacing manual processes, cutting weekly reporting preparation, and optimizing MySQL database schemas.'
       },
       skills: {
         title: 'ROLES COMPLETED',

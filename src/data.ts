@@ -171,14 +171,16 @@ export const projectsData: ProjectData[] = [
   {
     id: 'faultdetect',
     title: 'AI Fault Detection & Maintenance',
-    subtitle: 'Predictive Machinery Analytics',
-    year: '2025',
-    tech: ['Python', 'Scikit-learn', 'Pandas', 'Flask', 'MySQL'],
+    subtitle: 'AIOps Predictive Maintenance Platform',
+    year: '2026',
+    tech: ['SvelteKit', 'Three.js', 'Drizzle ORM', 'Neon Postgres', 'Vercel', 'DSP'],
     highlights: [
-      'Built an end-to-end ML pipeline encompassing data ingestion, feature engineering, and classification model training to detect machinery faults before failure occurs.',
-      'Enabled proactive maintenance decisions that can reduce costly unplanned industrial downtime by up to 30%.'
+      'Developed a full-stack AIOps Predictive Maintenance Platform featuring real-time DSP spectral envelope demodulation.',
+      'Built interactive Three.js 3D mechanical digital twins to map live physical telemetry onto virtual components.',
+      'Implemented automated LLM-broker load failover routing to ensure high availability and resilient model inference.'
     ],
-    kaggleUrl: 'https://kaggle.com/jagjeetsinghdhillon'
+    liveUrl: 'https://ai-fault-detection.vercel.app',
+    githubUrl: 'https://github.com/TheJd04/AI-Fault-Detection-Maintenance'
   },
   {
     id: 'resumescreen',
@@ -244,8 +246,8 @@ export const experienceDataList: ExperienceData[] = [
 // Core skills grouped by category
 export const skillsByGroup = {
   Languages: ['Python', 'JavaScript (ES6+)', 'SQL', 'C/C++'],
-  Frameworks: ['Flask', 'React.js', 'Node.js', 'REST APIs', 'JWT Auth', 'Pandas', 'Scikit-learn', 'LangChain', 'Selenium'],
-  Databases: ['MySQL', 'PostgreSQL'],
+  Frameworks: ['SvelteKit', 'React.js', 'Three.js', 'Flask', 'Node.js', 'Drizzle ORM', 'Pandas', 'Scikit-learn', 'LangChain'],
+  Databases: ['MySQL', 'PostgreSQL', 'Neon Postgres'],
   CloudDevOps: ['AWS', 'Docker', 'CI/CD', 'Oracle Cloud OCI'],
   Tools: ['Git', 'GitHub', 'Jupyter', 'VS Code', 'n8n', 'Electron.js']
 };
@@ -254,7 +256,7 @@ export const educationData = {
   degree: 'B.Tech, Computer Science Engineering',
   school: 'Amity University, Mohali',
   period: '2022 – 2026',
-  gpa: 'CGPA: 7.0'
+  gpa: '7.18 CGPA (8th Sem)'
 };
 
 export const certificationsList = [
@@ -298,7 +300,7 @@ export const tabDataList: TabData[] = [
       },
       experience: {
         title: 'EDUCATION',
-        content: 'B.Tech in Computer Science Engineering at Amity University, Mohali (2022 - 2026). Cumulative GPA: 7.0.'
+        content: 'B.Tech in Computer Science Engineering at Amity University, Mohali (2022 - 2026). 7.18 CGPA (8th Sem).'
       },
       contact: {
         title: 'SECURE CREDENTIALS',
@@ -327,7 +329,7 @@ export const tabDataList: TabData[] = [
           'BioPulse Elite (AI Industrial Dash)',
           'AI-Powered Job Alert (n8n & Scraping)',
           'Personalized Career Coach (AI Agent)',
-          'AI Fault Detection (Predictive ML)',
+          'AI Fault Detection (AIOps Platform)',
           'Resume Screening NLP App (Streamlit)'
         ]
       },

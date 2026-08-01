@@ -19,18 +19,51 @@ export default function Contact() {
 
   const [isTransmitting, setIsTransmitting] = useState(false);
   const [isSent, setIsSent] = useState(false);
+  const [transmissionError, setTransmissionError] = useState<string | null>(null);
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
     
     setIsTransmitting(true);
-    setTimeout(() => {
-      setTimeout(() => {
-        setIsTransmitting(false);
+    setTransmissionError(null);
+
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE";
+
+    if (accessKey === "YOUR_ACCESS_KEY_HERE") {
+      setIsTransmitting(false);
+      setTransmissionError("Uplink failed: Web3Forms Access Key is not configured. Please add VITE_WEB3FORMS_ACCESS_KEY to your environment variables.");
+      return;
+    }
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `New Message from CV Portfolio - ${formData.name}`,
+          from_name: "CV Portfolio"
+        })
+      });
+
+      const data = await response.json();
+      if (data.success) {
         setIsSent(true);
-      }, 1000);
-    }, 800);
+      } else {
+        setTransmissionError(data.message || "Failed to dispatch transmission.");
+      }
+    } catch (err) {
+      setTransmissionError("Network error: Unable to establish telemetry link.");
+    } finally {
+      setIsTransmitting(false);
+    }
   };
 
   const getSocialIcon = (id: string) => {
@@ -106,7 +139,7 @@ export default function Contact() {
                   onClick={() => {
                     setIsSent(false);
                     setFormData({ name: '', email: '', message: '' });
-                    setTerminalLogs(['SESSION RE-INITIALIZED', 'STANDBY FOR PORT CONNECTION...']);
+                    setTransmissionError(null);
                   }}
                   className="liquid-glass rounded-full px-8 py-3 text-xs font-mono text-foreground font-bold tracking-wider uppercase transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] cursor-pointer"
                   id="reset-form-btn"
@@ -166,6 +199,12 @@ export default function Contact() {
                     placeholder="Hey Jagjeet, I'd love to discuss..."
                   />
                 </div>
+
+                {transmissionError && (
+                  <div className="text-red-400 font-mono text-xs text-center border border-red-500/20 bg-red-500/5 py-2.5 px-4 rounded-xl">
+                    {transmissionError}
+                  </div>
+                )}
 
                 <button
                   type="submit"

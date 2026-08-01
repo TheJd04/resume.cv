@@ -141,7 +141,7 @@ export const projectsData: ProjectData[] = [
       'Built a full-stack AI platform with 3 live operational dashboards integrating 5 production ML models (ANN @ 98.39% accuracy) for real-time predictions every 5 seconds.',
       'Implemented a GPT-4o-powered conversational AI interface and fleet route optimizer, reducing manual coordination overhead for fleet managers by an estimated 40%.'
     ],
-    githubUrl: 'https://github.com/TheJd04'
+    githubUrl: 'https://github.com/TheJd04/BioPulseAI'
   },
   {
     id: 'jobalert',

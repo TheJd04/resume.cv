@@ -145,14 +145,15 @@ export const projectsData: ProjectData[] = [
   },
   {
     id: 'jobalert',
-    title: 'AI-Powered Job Alert System',
-    subtitle: 'Automated Scraping & Alert Pipeline',
-    year: '2025',
-    tech: ['Python', 'n8n', 'Web Scraping', 'Workflow Automation'],
+    title: 'AI Job Intelligence Dashboard',
+    subtitle: 'Multi-Source Scraping & Gemini LLM Pipeline',
+    year: '2026',
+    tech: ['Next.js', 'TypeScript', 'Gemini API', 'Web Scraping', 'n8n', 'Vercel'],
     highlights: [
-      'Built an automated job monitoring pipeline that scrapes live listings, filters by user-defined criteria, and delivers instant WhatsApp alerts via n8n.',
-      'Saves users over 10 hours per week of manual searching by creating a fully automated, zero-touch notification loop.'
+      'Built a full-stack AI Job Intelligence Dashboard that scrapes 4 job platforms in real-time, scores listings against a candidate profile using Gemini LLM, and auto-generates tailored cover letters and interview prep materials — deployed live on Vercel.',
+      'Phase 1 ships a multi-source web scraping pipeline (LinkedIn, Indeed, Naukri, Internshala) orchestrated via n8n, a Gemini-powered fit-score engine, saved-jobs bookmarks, a 4-stage application tracker (Saved → Applied → Interviewing → Offer), toast notifications, and analytics charts — all persisted in localStorage with zero backend.'
     ],
+    liveUrl: 'https://ai-powered-job-alert.vercel.app',
     githubUrl: 'https://github.com/TheJd04/AI_Powered_job_alert'
   },
   {
@@ -327,7 +328,7 @@ export const tabDataList: TabData[] = [
           'DualDesk App (Live & Shipped)',
           'Vaani — Voice Dictation (Live & Shipped)',
           'BioPulse Elite (AI Industrial Dash)',
-          'AI-Powered Job Alert (n8n & Scraping)',
+          'AI Job Intelligence Dashboard (Live & Deployed)',
           'Personalized Career Coach (AI Agent)',
           'AI Fault Detection (AIOps Platform)',
           'Resume Screening NLP App (Streamlit)'

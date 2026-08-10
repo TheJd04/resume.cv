@@ -65,8 +65,9 @@ export default function Navbar({ activeSection, setActiveSection }: NavbarProps)
         {/* CTA Buttons */}
         <div className="flex items-center gap-3" id="navbar-cta-group">
           <a
-            href="/resume.pdf"
-            download
+            href="https://drive.google.com/drive/folders/1-wxWrkRuxcgmZiBnytJS2DimxWvqlohX?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden sm:flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-mono font-semibold border border-white/15 text-muted-foreground hover:text-foreground hover:border-white/30 transition-all duration-300 cursor-pointer"
             id="navbar-resume-btn"
           >

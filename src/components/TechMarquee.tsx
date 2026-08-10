@@ -29,7 +29,7 @@ const techStack: TechItem[] = [
 ];
 
 
-function TechCard({ item }: { item: TechItem }) {
+function TechCard({ item }: { item: TechItem; key?: string }) {
   return (
     <div
       className="flex items-center gap-3 mx-4 px-5 py-3 rounded-2xl border border-white/8 bg-black/30 backdrop-blur-sm hover:border-white/20 transition-colors duration-300 shrink-0 group cursor-default"

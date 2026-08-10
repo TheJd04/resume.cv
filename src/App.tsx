@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import TechMarquee from './components/TechMarquee';
 import Timeline from './components/Timeline';
 import Projects from './components/Projects';
+import Research from './components/Research';
 import OpenSource from './components/OpenSource';
 import SkillsRadar from './components/SkillsRadar';
 import LookingFor from './components/LookingFor';
@@ -16,7 +17,7 @@ export default function App() {
 
   // Interactive scroll monitoring to update active nav state dynamically
   useEffect(() => {
-    const sections = ['home', 'projects', 'experience', 'skills', 'contact'];
+    const sections = ['home', 'projects', 'research', 'experience', 'skills', 'contact'];
     
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 200; // Offset for headers
@@ -88,7 +89,10 @@ export default function App() {
         {/* Section 4: Projects Grid */}
         <Projects />
 
-        {/* Section 5: Open Source Contributions */}
+        {/* Section 5: Research & IEEE Publications */}
+        <Research />
+
+        {/* Section 6: Open Source Contributions */}
         <OpenSource />
 
         {/* Section 6: Professional Internships */}

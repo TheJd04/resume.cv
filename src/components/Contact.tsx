@@ -28,7 +28,7 @@ export default function Contact() {
     setIsTransmitting(true);
     setTransmissionError(null);
 
-    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE";
+    const accessKey = (import.meta as unknown as { env: Record<string, string> }).env?.VITE_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE";
 
     if (accessKey === "YOUR_ACCESS_KEY_HERE") {
       setIsTransmitting(false);

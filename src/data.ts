@@ -33,6 +33,18 @@ export interface ExperienceData {
   highlights: string[];
 }
 
+export interface ResearchPaper {
+  id: string;
+  title: string;
+  subtitle: string;
+  publisher: string;
+  year: string;
+  url: string;
+  tags: string[];
+  highlights: string[];
+}
+
+
 // Jagjeet's authentic social profiles
 export const socialLinks: SocialLink[] = [
   {
@@ -197,6 +209,25 @@ export const projectsData: ProjectData[] = [
     githubUrl: 'https://github.com/TheJd04/Resume-screening-App'
   }
 ];
+
+// Jagjeet's published research papers
+export const researchPapersData: ResearchPaper[] = [
+  {
+    id: 'fuzzy-ga-crop-disease',
+    title: 'A Hybrid Fuzzy-GA Machine Learning System for Accurate Crop Disease Diagnosis',
+    subtitle: 'IEEE Conference Publication',
+    publisher: 'IEEE Xplore',
+    year: '2026',
+    url: 'https://ieeexplore.ieee.org/document/11620273',
+    tags: ['EfficientNet', 'Genetic Algorithm (GA)', 'Fuzzy Logic', 'DenseNet', 'Machine Learning', 'Computer Vision', 'Smart Agriculture'],
+    highlights: [
+      'Engineered a three-stage classification framework combining EfficientNet for feature extraction, Genetic Algorithm (GA) for optimized feature selection, and a DenseNetFuzzy classifier for uncertainty-aware prediction.',
+      'Dramatically enhanced model robustness and field generalization under noisy conditions, varied lighting, and real-world agricultural environments while providing interpretable confidence scores.',
+      'Outperformed 20 existing models in comparative benchmarks, providing a unified architecture designed for real-world smart agriculture deployment.'
+    ]
+  }
+];
+
 
 // Jagjeet's authentic work experience
 export const experienceDataList: ExperienceData[] = [

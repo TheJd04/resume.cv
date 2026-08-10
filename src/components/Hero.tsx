@@ -188,7 +188,7 @@ export default function Hero({ onScrollToProjects }: HeroProps) {
           Begin Journey
         </button>
         <a
-          href="https://drive.google.com/drive/folders/1-wxWrkRuxcgmZiBnytJS2DimxWvqlohX?usp=sharing"
+          href="https://drive.google.com/uc?export=download&id=1QOkaZa7V-mFMvieTRy19q2y19GM8DBlg"
           target="_blank"
           rel="noopener noreferrer"
           className="liquid-glass flex items-center gap-2 rounded-full px-8 py-5 text-base font-mono font-semibold text-foreground hover:scale-[1.03] transition-transform duration-300 active:scale-[0.98] cursor-pointer border border-white/10"

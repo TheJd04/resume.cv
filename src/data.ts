@@ -88,6 +88,20 @@ export const socialLinks: SocialLink[] = [
 // Jagjeet's real-world projects
 export const projectsData: ProjectData[] = [
   {
+    id: 'lowlanguagetranslator',
+    title: 'Low Language Translator',
+    subtitle: 'Multilingual Intelligence Engine',
+    year: '2026',
+    tech: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Flask', 'Python', 'VADER', 'TextBlob', 'SQLite'],
+    highlights: [
+      'Built an end-to-end NLP microservice & React SPA breaking linguistic barriers for low-resource languages (Punjabi, Swahili, Yoruba, Hindi, Welsh, Amharic, Zulu, Basque).',
+      'Engineered multi-dimensional emotion sentiment analysis featuring positive/negative/neutral polarity, model confidence, and a visual 1–10 intensity scale meter.',
+      'Developed backend /api/metrics telemetry endpoint exposing real-time inference latency (42.8ms) and throughput (120 req/s) with native Web Speech audio synthesis and SQLite persistence.'
+    ],
+    liveUrl: 'https://low-language-translator-nlp.vercel.app',
+    githubUrl: 'https://github.com/TheJd04/low-language-translator-nlp-'
+  },
+  {
     id: 'ragchatbot',
     title: 'Enterprise RAG Assistant',
     subtitle: 'Full-Stack AI Chatbot with Citation & Voice',
@@ -355,6 +369,7 @@ export const tabDataList: TabData[] = [
         title: 'FEATURED PROJECTS',
         isList: true,
         content: [
+          'Low Language Translator (Live NLP Engine)',
           'GharSuraksha (AI Home Insurance)',
           'DualDesk App (Live & Shipped)',
           'Vaani — Voice Dictation (Live & Shipped)',

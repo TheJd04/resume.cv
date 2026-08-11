@@ -17,7 +17,7 @@ export default function App() {
 
   // Interactive scroll monitoring to update active nav state dynamically
   useEffect(() => {
-    const sections = ['home', 'projects', 'research', 'experience', 'skills', 'contact'];
+    const sections = ['home', 'timeline', 'research', 'projects', 'skills', 'contact'];
     
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 200; // Offset for headers
@@ -40,7 +40,7 @@ export default function App() {
   }, []);
 
   const handleScrollToProjects = () => {
-    const el = document.getElementById('projects');
+    const el = document.getElementById('research') || document.getElementById('projects');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
@@ -86,11 +86,11 @@ export default function App() {
         {/* Section 3: Journey Timeline */}
         <Timeline />
 
-        {/* Section 4: Projects Grid */}
-        <Projects />
-
-        {/* Section 5: Research & IEEE Publications */}
+        {/* Section 4: Research & IEEE Publications */}
         <Research />
+
+        {/* Section 5: Projects Grid */}
+        <Projects />
 
         {/* Section 6: Open Source Contributions */}
         <OpenSource />

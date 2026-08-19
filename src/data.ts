@@ -305,16 +305,34 @@ export const educationData = {
   gpa: '7.18 CGPA (8th Sem)'
 };
 
-export const certificationsList = [
+export interface CertificationData {
+  name: string;
+  issuer: string;
+  badge?: string;
+  issueDate?: string;
+  validUntil?: string;
+  certId?: string;
+  isOfficial?: boolean;
+}
+
+export const certificationsList: CertificationData[] = [
+  { 
+    name: 'Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate', 
+    issuer: 'Oracle Corporation',
+    badge: 'Oracle Certified Foundations Associate',
+    issueDate: 'August 19, 2025',
+    validUntil: 'August 19, 2027',
+    certId: '102362864OCI25AICFA',
+    isOfficial: true
+  },
   { name: 'AWS Certified Data Engineer Associate 2026', issuer: 'Udemy' },
+  { name: 'AI Agents Certification', issuer: 'IIT Jammu', isOfficial: true },
   { name: 'Ultimate RAG Bootcamp — LangChain, LangGraph & LangSmith', issuer: 'Udemy' },
   { name: 'Decoding DevOps – From Basics to Advanced with AI', issuer: 'Udemy' },
   { name: 'The Complete Prompt Engineering for AI Bootcamp', issuer: 'Udemy' },
   { name: 'Data Analyst: Professional Certificate in Data Analysis', issuer: 'Udemy' },
   { name: 'SQL Boot Camp', issuer: 'Udemy' },
-  { name: 'The Git & GitHub Bootcamp', issuer: 'Udemy' },
-  { name: 'Oracle Cloud OCI Associate', issuer: 'Oracle' },
-  { name: 'AI Agents Certification', issuer: 'IIT Jammu' },
+  { name: 'The Git & GitHub Bootcamp', issuer: 'Udemy' }
 ];
 
 export const LINKEDIN_CERTS_URL = 'https://www.linkedin.com/in/jagjeet-singh-dhillon-022b822b7/details/certifications/';

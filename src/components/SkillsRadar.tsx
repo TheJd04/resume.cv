@@ -3,12 +3,15 @@ import {
   educationData, 
   certificationsList, 
   skillsByGroup,
-  LINKEDIN_CERTS_URL
+  LINKEDIN_CERTS_URL,
+  CertificationData
 } from '../data';
 import { Award, GraduationCap, Layers, ExternalLink, Code, Flame, CheckCircle2, X, ShieldCheck } from 'lucide-react';
 
 export default function SkillsRadar() {
   const [showBadgeModal, setShowBadgeModal] = useState(false);
+  const [selectedCert, setSelectedCert] = useState<CertificationData | null>(null);
+
   return (
     <section 
       id="skills" 
@@ -67,24 +70,56 @@ export default function SkillsRadar() {
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="certs-grid">
-              {/* Show first 6 featured certs */}
+              {/* Show featured certs with rich metadata for official certifications */}
               {certificationsList.slice(0, 6).map((cert, index) => (
                 <div 
                   key={index} 
-                  className="liquid-glass rounded-xl p-4 border border-white/10 bg-black/45 flex items-center gap-3"
+                  onClick={() => cert.isOfficial && setSelectedCert(cert)}
+                  className={`liquid-glass rounded-xl p-4 border transition-all duration-300 flex flex-col justify-between gap-2.5 ${
+                    cert.isOfficial 
+                      ? 'border-amber-500/30 bg-gradient-to-br from-amber-500/10 via-black/50 to-black/60 shadow-lg shadow-amber-500/5 cursor-pointer hover:border-amber-500/60 hover:scale-[1.01]' 
+                      : 'border-white/10 bg-black/45 hover:border-white/20'
+                  }`}
                   id={`cert-item-${index}`}
                 >
-                  <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-foreground shrink-0 select-none">
-                    <Award size={16} />
+                  <div className="flex items-start gap-3">
+                    <div className={`w-8 h-8 rounded-lg border flex items-center justify-center shrink-0 select-none ${
+                      cert.isOfficial 
+                        ? 'bg-amber-500/20 border-amber-500/40 text-amber-400' 
+                        : 'bg-white/5 border-white/10 text-foreground'
+                    }`}>
+                      <Award size={16} />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        <span className="text-xs text-foreground font-semibold leading-tight block select-text">
+                          {cert.name}
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between gap-2 mt-1">
+                        <span className="text-[10px] text-muted-foreground/80 font-mono block">
+                          {cert.issuer}
+                        </span>
+                        {cert.isOfficial && (
+                          <span className="font-mono text-[9px] bg-amber-400/10 text-amber-400 border border-amber-400/30 px-1.5 py-0.5 rounded font-semibold uppercase tracking-wider">
+                            Verified
+                          </span>
+                        )}
+                      </div>
+                    </div>
                   </div>
-                  <div className="min-w-0">
-                    <span className="text-xs text-foreground/95 font-medium leading-tight block select-text">
-                      {cert.name}
-                    </span>
-                    <span className="text-[10px] text-muted-foreground/60 font-mono mt-0.5 block">
-                      {cert.issuer}
-                    </span>
-                  </div>
+
+                  {/* Extra metadata footer if available */}
+                  {(cert.certId || cert.issueDate) && (
+                    <div className="pt-2 border-t border-white/10 flex items-center justify-between font-mono text-[10px] text-muted-foreground/70">
+                      {cert.issueDate && (
+                        <span>Issued: {cert.issueDate}</span>
+                      )}
+                      {cert.certId && (
+                        <span className="text-amber-300/80 font-medium">ID: {cert.certId}</span>
+                      )}
+                    </div>
+                  )}
                 </div>
               ))}
 
@@ -244,6 +279,100 @@ export default function SkillsRadar() {
               </a>
               <button
                 onClick={() => setShowBadgeModal(false)}
+                className="px-5 py-3 rounded-xl bg-white/5 border border-white/10 text-foreground font-mono text-xs hover:bg-white/10 transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Interactive Official Certificate Lightbox Modal */}
+      {selectedCert && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fade-in"
+          onClick={() => setSelectedCert(null)}
+        >
+          <div 
+            className="relative w-full max-w-xl liquid-glass rounded-3xl border border-amber-500/40 bg-[#0a0e14]/95 p-6 md:p-8 space-y-6 shadow-2xl shadow-amber-500/20"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedCert(null)}
+              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/5 border border-white/10 hover:bg-white/20 flex items-center justify-center text-foreground transition-colors"
+            >
+              <X size={18} />
+            </button>
+
+            {/* Header */}
+            <div className="text-center space-y-2">
+              <span className="font-mono text-xs text-amber-400 uppercase tracking-widest font-semibold flex items-center justify-center gap-1.5">
+                <ShieldCheck size={15} /> Official Certified Credential
+              </span>
+              <h3 
+                className="text-2xl md:text-3xl font-normal text-foreground leading-snug"
+                style={{ fontFamily: "'Instrument Serif', serif" }}
+              >
+                {selectedCert.name}
+              </h3>
+              <p className="font-mono text-xs text-muted-foreground">{selectedCert.issuer}</p>
+            </div>
+
+            {/* Certificate Preview Card */}
+            <div className="relative w-full p-6 rounded-2xl bg-black/70 border border-amber-500/30 text-center space-y-3 shadow-inner">
+              <div className="w-12 h-12 mx-auto rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400">
+                <Award size={24} />
+              </div>
+              <span className="font-mono text-xs text-amber-300 font-semibold block uppercase tracking-wider">
+                {selectedCert.badge || selectedCert.name}
+              </span>
+              <p className="text-xs text-muted-foreground italic">
+                Recognized by {selectedCert.issuer} as Certified.
+              </p>
+            </div>
+
+            {/* Certificate Metadata Table */}
+            <div className="bg-white/5 border border-white/10 rounded-xl p-4 font-mono text-xs space-y-2.5 text-muted-foreground">
+              {selectedCert.issueDate && (
+                <div className="flex justify-between border-b border-white/10 pb-2">
+                  <span>Issued Date:</span>
+                  <span className="text-foreground font-semibold">{selectedCert.issueDate}</span>
+                </div>
+              )}
+              {selectedCert.validUntil && (
+                <div className="flex justify-between border-b border-white/10 pb-2">
+                  <span>Validity:</span>
+                  <span className="text-foreground font-semibold">Valid until {selectedCert.validUntil}</span>
+                </div>
+              )}
+              {selectedCert.certId && (
+                <div className="flex justify-between border-b border-white/10 pb-2">
+                  <span>eCertificate ID:</span>
+                  <span className="text-amber-400 font-bold select-all">{selectedCert.certId}</span>
+                </div>
+              )}
+              <div className="flex justify-between">
+                <span>Verification Status:</span>
+                <span className="text-emerald-400 font-semibold flex items-center gap-1">
+                  <CheckCircle2 size={13} /> Official & Verified
+                </span>
+              </div>
+            </div>
+
+            {/* Action buttons */}
+            <div className="flex gap-3">
+              <a
+                href={LINKEDIN_CERTS_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="flex-1 py-3 rounded-xl bg-amber-500 text-black font-mono text-xs font-bold hover:bg-amber-400 transition-colors flex items-center justify-center gap-2"
+              >
+                Verify on LinkedIn <ExternalLink size={14} />
+              </a>
+              <button
+                onClick={() => setSelectedCert(null)}
                 className="px-5 py-3 rounded-xl bg-white/5 border border-white/10 text-foreground font-mono text-xs hover:bg-white/10 transition-colors"
               >
                 Close

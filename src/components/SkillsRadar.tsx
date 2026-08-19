@@ -70,19 +70,19 @@ export default function SkillsRadar() {
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="certs-grid">
-              {/* Show all certs with clean default layout and rich hover reveal details */}
+              {/* Show all certs with ultra-clean default layout and rich hover reveal details */}
               {certificationsList.map((cert, index) => (
                 <div 
                   key={index} 
                   onClick={() => cert.isOfficial && setSelectedCert(cert)}
-                  className={`liquid-glass rounded-xl p-4 border transition-all duration-300 flex flex-col justify-between gap-2.5 ${
+                  className={`liquid-glass rounded-xl p-4 border transition-all duration-300 flex flex-col justify-between gap-2 ${
                     cert.isOfficial 
                       ? 'border-amber-500/30 bg-gradient-to-br from-amber-500/10 via-black/50 to-black/60 shadow-lg shadow-amber-500/5 cursor-pointer hover:border-amber-500/60 hover:scale-[1.01] group' 
                       : 'border-white/10 bg-black/45 hover:border-white/20'
                   }`}
                   id={`cert-item-${index}`}
                 >
-                  {/* Always visible header */}
+                  {/* Always visible minimal header */}
                   <div className="flex items-start gap-3">
                     <div className={`w-8 h-8 rounded-lg border flex items-center justify-center shrink-0 select-none ${
                       cert.isOfficial 
@@ -108,8 +108,18 @@ export default function SkillsRadar() {
                     </div>
                   </div>
 
-                  {/* Hidden by default — smooth hover reveal for skills, ID, and projects */}
-                  <div className="overflow-hidden max-h-0 opacity-0 group-hover:max-h-48 group-hover:opacity-100 transition-all duration-300 ease-in-out space-y-2 group-hover:pt-2 group-hover:border-t group-hover:border-white/10">
+                  {/* Hidden by default — smooth hover reveal for Issue Date, Skills, ID, and Projects */}
+                  <div className="overflow-hidden max-h-0 opacity-0 group-hover:max-h-56 group-hover:opacity-100 transition-all duration-300 ease-in-out space-y-2 group-hover:pt-2.5 group-hover:border-t group-hover:border-white/10">
+                    {/* Issued Date & ID */}
+                    <div className="flex items-center justify-between font-mono text-[10px] text-muted-foreground/80">
+                      {cert.issueDate && (
+                        <span>Issued: {cert.issueDate}</span>
+                      )}
+                      {cert.certId && (
+                        <span className="text-amber-300/80 font-medium truncate max-w-[130px]">ID: {cert.certId}</span>
+                      )}
+                    </div>
+
                     {/* Skills learned badges */}
                     {cert.skills && cert.skills.length > 0 && (
                       <div className="flex flex-wrap gap-1">
@@ -126,31 +136,12 @@ export default function SkillsRadar() {
                       </div>
                     )}
 
-                    {/* ID and Applied Projects */}
-                    <div className="space-y-1 font-mono text-[10px]">
-                      {cert.certId && (
-                        <div className="text-amber-300/80 font-medium truncate">
-                          <span className="text-muted-foreground/60">ID:</span> {cert.certId}
-                        </div>
-                      )}
-                      {cert.projects && cert.projects.length > 0 && (
-                        <div className="text-[9.5px] text-amber-300/90 leading-tight">
-                          <span className="text-muted-foreground/60">Applied in:</span> {cert.projects.join(', ')}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Always visible card footer */}
-                  <div className="pt-2 border-t border-white/10 flex items-center justify-between font-mono text-[10px] text-muted-foreground/70">
-                    {cert.issueDate ? (
-                      <span>Issued: {cert.issueDate}</span>
-                    ) : (
-                      <span>Verified Credential</span>
+                    {/* Applied Projects */}
+                    {cert.projects && cert.projects.length > 0 && (
+                      <div className="text-[9.5px] font-mono text-amber-300/90 leading-tight">
+                        <span className="text-muted-foreground/60">Applied in:</span> {cert.projects.join(', ')}
+                      </div>
                     )}
-                    <span className="text-[9px] text-amber-400/60 group-hover:text-amber-400 transition-colors">
-                      Hover for details →
-                    </span>
                   </div>
                 </div>
               ))}

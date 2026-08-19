@@ -70,56 +70,79 @@ export default function SkillsRadar() {
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="certs-grid">
-              {/* Show all certs with rich metadata and visual media popups */}
+              {/* Show all certs with rich metadata, skills, applied projects, and visual media popups */}
               {certificationsList.map((cert, index) => (
                 <div 
                   key={index} 
                   onClick={() => cert.isOfficial && setSelectedCert(cert)}
-                  className={`liquid-glass rounded-xl p-4 border transition-all duration-300 flex flex-col justify-between gap-2.5 ${
+                  className={`liquid-glass rounded-xl p-4 border transition-all duration-300 flex flex-col justify-between gap-3 ${
                     cert.isOfficial 
-                      ? 'border-amber-500/30 bg-gradient-to-br from-amber-500/10 via-black/50 to-black/60 shadow-lg shadow-amber-500/5 cursor-pointer hover:border-amber-500/60 hover:scale-[1.01]' 
+                      ? 'border-amber-500/30 bg-gradient-to-br from-amber-500/10 via-black/50 to-black/60 shadow-lg shadow-amber-500/5 cursor-pointer hover:border-amber-500/60 hover:scale-[1.01] group' 
                       : 'border-white/10 bg-black/45 hover:border-white/20'
                   }`}
                   id={`cert-item-${index}`}
                 >
-                  <div className="flex items-start gap-3">
-                    <div className={`w-8 h-8 rounded-lg border flex items-center justify-center shrink-0 select-none ${
-                      cert.isOfficial 
-                        ? 'bg-amber-500/20 border-amber-500/40 text-amber-400' 
-                        : 'bg-white/5 border-white/10 text-foreground'
-                    }`}>
-                      <Award size={16} />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center gap-1.5 flex-wrap">
-                        <span className="text-xs text-foreground font-semibold leading-tight block select-text">
-                          {cert.name}
-                        </span>
+                  <div className="space-y-2">
+                    <div className="flex items-start gap-3">
+                      <div className={`w-8 h-8 rounded-lg border flex items-center justify-center shrink-0 select-none ${
+                        cert.isOfficial 
+                          ? 'bg-amber-500/20 border-amber-500/40 text-amber-400 group-hover:scale-105 transition-transform' 
+                          : 'bg-white/5 border-white/10 text-foreground'
+                      }`}>
+                        <Award size={16} />
                       </div>
-                      <div className="flex items-center justify-between gap-2 mt-1">
-                        <span className="text-[10px] text-muted-foreground/80 font-mono block">
-                          {cert.issuer}
-                        </span>
-                        {cert.isOfficial && (
-                          <span className="font-mono text-[9px] bg-amber-400/10 text-amber-400 border border-amber-400/30 px-1.5 py-0.5 rounded font-semibold uppercase tracking-wider flex items-center gap-1">
-                            {cert.image && <ImageIcon size={10} />} Verified
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          <span className="text-xs text-foreground font-semibold leading-tight block select-text">
+                            {cert.name}
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between gap-2 mt-1">
+                          <span className="text-[10px] text-muted-foreground/80 font-mono block">
+                            {cert.issuer}
+                          </span>
+                          {cert.isOfficial && (
+                            <span className="font-mono text-[9px] bg-amber-400/10 text-amber-400 border border-amber-400/30 px-1.5 py-0.5 rounded font-semibold uppercase tracking-wider flex items-center gap-1 shrink-0">
+                              {cert.image && <ImageIcon size={10} />} Verified
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Skills learned badges */}
+                    {cert.skills && cert.skills.length > 0 && (
+                      <div className="flex flex-wrap gap-1 pt-1">
+                        {cert.skills.slice(0, 3).map((skill, i) => (
+                          <span key={i} className="text-[9px] font-mono bg-white/5 border border-white/10 text-muted-foreground px-1.5 py-0.5 rounded">
+                            {skill}
+                          </span>
+                        ))}
+                        {cert.skills.length > 3 && (
+                          <span className="text-[9px] font-mono text-amber-400/70 px-1 py-0.5">
+                            +{cert.skills.length - 3} more
                           </span>
                         )}
                       </div>
-                    </div>
+                    )}
                   </div>
 
-                  {/* Extra metadata footer if available */}
-                  {(cert.certId || cert.issueDate) && (
-                    <div className="pt-2 border-t border-white/10 flex items-center justify-between font-mono text-[10px] text-muted-foreground/70">
+                  {/* Footer metadata with date, ID, and projects */}
+                  <div className="pt-2 border-t border-white/10 space-y-1 font-mono text-[10px]">
+                    <div className="flex items-center justify-between text-muted-foreground/70">
                       {cert.issueDate && (
                         <span>Issued: {cert.issueDate}</span>
                       )}
                       {cert.certId && (
-                        <span className="text-amber-300/80 font-medium truncate max-w-[140px]">ID: {cert.certId}</span>
+                        <span className="text-amber-300/80 font-medium truncate max-w-[130px]">ID: {cert.certId}</span>
                       )}
                     </div>
-                  )}
+                    {cert.projects && cert.projects.length > 0 && (
+                      <div className="text-[9.5px] text-amber-300/90 truncate">
+                        <span className="text-muted-foreground/60">Applied in:</span> {cert.projects.join(', ')}
+                      </div>
+                    )}
+                  </div>
                 </div>
               ))}
 
@@ -348,6 +371,38 @@ export default function SkillsRadar() {
                 <p className="text-xs text-muted-foreground italic">
                   Recognized by {selectedCert.issuer} as Certified.
                 </p>
+              </div>
+            )}
+
+            {/* Skills Mastered Section */}
+            {selectedCert.skills && selectedCert.skills.length > 0 && (
+              <div className="space-y-2">
+                <span className="font-mono text-xs text-amber-400/90 uppercase tracking-widest font-semibold block">
+                  Key Skills Mastered:
+                </span>
+                <div className="flex flex-wrap gap-1.5">
+                  {selectedCert.skills.map((skill, i) => (
+                    <span key={i} className="font-mono text-xs bg-amber-500/10 border border-amber-500/30 text-amber-300 px-2.5 py-1 rounded-lg">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Applied in Projects Section */}
+            {selectedCert.projects && selectedCert.projects.length > 0 && (
+              <div className="space-y-2">
+                <span className="font-mono text-xs text-emerald-400 uppercase tracking-widest font-semibold block">
+                  Applied in Portfolio Projects:
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {selectedCert.projects.map((proj, i) => (
+                    <span key={i} className="font-mono text-xs bg-white/5 border border-white/15 text-foreground px-2.5 py-1 rounded-lg flex items-center gap-1.5">
+                      🚀 {proj}
+                    </span>
+                  ))}
+                </div>
               </div>
             )}
 

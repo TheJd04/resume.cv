@@ -320,6 +320,8 @@ export interface CertificationData {
   isOfficial?: boolean;
   image?: string;
   verifyUrl?: string;
+  skills?: string[];
+  projects?: string[];
 }
 
 export const certificationsList: CertificationData[] = [
@@ -331,7 +333,9 @@ export const certificationsList: CertificationData[] = [
     validUntil: 'August 19, 2027',
     certId: '102362864OCI25AICFA',
     image: '/certs/oracle-oci-2025-ai-foundations-associate.png',
-    isOfficial: true
+    isOfficial: true,
+    skills: ['Oracle Cloud OCI', 'Generative AI', 'LLMs', 'Cloud Infrastructure', 'Machine Learning'],
+    projects: ['Enterprise RAG Assistant', 'BioPulse Elite']
   },
   { 
     name: 'Ultimate RAG Bootcamp — LangChain, LangGraph & LangSmith', 
@@ -340,7 +344,9 @@ export const certificationsList: CertificationData[] = [
     certId: 'UC-a0c06e27-d5d2-42fb-aa19-7fa19735c724',
     verifyUrl: 'https://ude.my/UC-a0c06e27-d5d2-42fb-aa19-7fa19735c724',
     image: '/certs/udemy-ultimate-rag-bootcamp.png',
-    isOfficial: true
+    isOfficial: true,
+    skills: ['LangChain', 'LangGraph', 'LangSmith', 'RAG Architecture', 'Vector DB (ChromaDB)'],
+    projects: ['Enterprise RAG Assistant', 'Personalized Career Coach']
   },
   { 
     name: 'Decoding DevOps – From Basics to Advanced with AI', 
@@ -349,7 +355,9 @@ export const certificationsList: CertificationData[] = [
     certId: 'UC-19805f82-9d1a-46da-a31f-367834509d70',
     verifyUrl: 'https://ude.my/UC-19805f82-9d1a-46da-a31f-367834509d70',
     image: '/certs/udemy-decoding-devops.png',
-    isOfficial: true
+    isOfficial: true,
+    skills: ['DevOps Automation', 'Docker Containerization', 'CI/CD Pipelines', 'Linux Administration'],
+    projects: ['BioPulse Elite', 'AI Fault Detection & Maintenance']
   },
   { 
     name: 'The Complete Prompt Engineering for AI Bootcamp', 
@@ -358,7 +366,9 @@ export const certificationsList: CertificationData[] = [
     certId: 'UC-58bb0dc4-b0a3-4187-a9f2-fa8122c18560',
     verifyUrl: 'https://ude.my/UC-58bb0dc4-b0a3-4187-a9f2-fa8122c18560',
     image: '/certs/udemy-prompt-engineering.png',
-    isOfficial: true
+    isOfficial: true,
+    skills: ['Prompt Engineering', 'LLM Optimization', 'Few-Shot Prompting', 'System Prompt Tuning'],
+    projects: ['GharSuraksha', 'AI Job Intelligence Dashboard']
   },
   { 
     name: 'Data Analyst: Professional Certificate in Data Analysis', 
@@ -367,7 +377,9 @@ export const certificationsList: CertificationData[] = [
     certId: 'UC-ddc2ce06-16cd-4577-8c4e-ec206c079921',
     verifyUrl: 'https://ude.my/UC-ddc2ce06-16cd-4577-8c4e-ec206c079921',
     image: '/certs/udemy-data-analyst.png',
-    isOfficial: true
+    isOfficial: true,
+    skills: ['Data Analysis', 'Python & Pandas', 'Data Visualization', 'Statistical Insights'],
+    projects: ['BioPulse Elite', 'Pancarbo Data Pipeline']
   },
   { 
     name: 'The Git & GitHub Bootcamp', 
@@ -376,7 +388,9 @@ export const certificationsList: CertificationData[] = [
     certId: 'UC-4dc9ca21-68b8-435e-9309-a375561700bc',
     verifyUrl: 'https://ude.my/UC-4dc9ca21-68b8-435e-9309-a375561700bc',
     image: '/certs/udemy-git-github.png',
-    isOfficial: true
+    isOfficial: true,
+    skills: ['Git Version Control', 'GitHub Workflows', 'Branching Strategy', 'Release Management'],
+    projects: ['DualDesk App', 'Enterprise RAG Assistant']
   },
   { 
     name: 'AWS Certified Data Engineer Associate 2026', 
@@ -385,7 +399,9 @@ export const certificationsList: CertificationData[] = [
     certId: 'UC-29b3674f-a701-4c45-8216-c2c8204e3e9b',
     verifyUrl: 'https://ude.my/UC-29b3674f-a701-4c45-8216-c2c8204e3e9b',
     image: '/certs/udemy-aws-data-engineer.png',
-    isOfficial: true
+    isOfficial: true,
+    skills: ['AWS Cloud Services', 'Data Pipeline Engineering', 'Data Warehousing', 'ETL Pipelines'],
+    projects: ['Pancarbo Data Pipeline', 'BioPulse Elite']
   },
   { 
     name: 'Artificial Intelligence (LLMs, GenAI, AI Agents) Certification', 
@@ -393,7 +409,9 @@ export const certificationsList: CertificationData[] = [
     issueDate: 'August 12, 2025',
     certId: 'TEC/IIT/SS25/C/M1/0144',
     image: '/certs/iit-jammu-ai-genai-internship.png',
-    isOfficial: true
+    isOfficial: true,
+    skills: ['AI Agents (CrewAI)', 'LangChain Workflows', 'LLM Automation', 'GenAI Systems'],
+    projects: ['Personalized Career Coach', 'Enterprise RAG Assistant']
   },
   { 
     name: 'The Complete SQL Bootcamp (30 Hours)', 
@@ -402,7 +420,9 @@ export const certificationsList: CertificationData[] = [
     certId: 'UC-27b8f277-b551-42df-9ff5-8f86ece3003b',
     verifyUrl: 'https://ude.my/UC-27b8f277-b551-42df-9ff5-8f86ece3003b',
     image: '/certs/udemy-sql-bootcamp.png',
-    isOfficial: true
+    isOfficial: true,
+    skills: ['SQL Query Optimization', 'PostgreSQL Schemas', 'MySQL Databases', 'Complex Joins'],
+    projects: ['BioPulse Elite', 'AI Fault Detection & Maintenance']
   },
   { 
     name: 'Blockchain in Supply Chain Management', 
@@ -411,14 +431,18 @@ export const certificationsList: CertificationData[] = [
     certId: 'UC-9c8975ea-c5f2-4fa9-8bb2-f6b696c53347',
     verifyUrl: 'https://ude.my/UC-9c8975ea-c5f2-4fa9-8bb2-f6b696c53347',
     image: '/certs/udemy-blockchain-supply-chain.png',
-    isOfficial: true
+    isOfficial: true,
+    skills: ['Blockchain Architecture', 'Smart Contracts', 'Supply Chain Security', 'Distributed Ledgers'],
+    projects: ['BioPulse Elite']
   },
   { 
     name: 'Full Stack Development Training Program', 
     issuer: 'OctaNet Services',
     issueDate: 'August 1, 2024',
     image: '/certs/octanet-fullstack-training.png',
-    isOfficial: true
+    isOfficial: true,
+    skills: ['Full-Stack Web Dev', 'React.js Frontend', 'Node.js Backend', 'REST APIs', 'SQL Cleaning'],
+    projects: ['DualDesk App', 'Low Language Translator']
   }
 ];
 

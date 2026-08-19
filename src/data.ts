@@ -31,6 +31,8 @@ export interface ExperienceData {
   location: string;
   period: string;
   highlights: string[];
+  certificateImage?: string;
+  certificateId?: string;
 }
 
 export interface ResearchPaper {
@@ -275,7 +277,9 @@ export const experienceDataList: ExperienceData[] = [
     period: 'Jun 2025 – Aug 2025',
     highlights: [
       'Built LangChain + OpenAI API-powered AI agent workflows under IIT faculty mentorship, applying LLM automation to practical institutional use cases.'
-    ]
+    ],
+    certificateImage: '/certs/iit-jammu-ai-genai-internship.png',
+    certificateId: 'TEC/IIT/SS25/C/M1/0144'
   },
   {
     id: 'octanet',
@@ -285,7 +289,8 @@ export const experienceDataList: ExperienceData[] = [
     period: 'Jul 2024 – Aug 2024',
     highlights: [
       'Assisted with front-end maintenance, debugging, and SQL-based data cleaning to support consistent web platform functionality for live clients.'
-    ]
+    ],
+    certificateImage: '/certs/octanet-fullstack-training.png'
   }
 ];
 
@@ -313,6 +318,8 @@ export interface CertificationData {
   validUntil?: string;
   certId?: string;
   isOfficial?: boolean;
+  image?: string;
+  verifyUrl?: string;
 }
 
 export const certificationsList: CertificationData[] = [
@@ -323,16 +330,96 @@ export const certificationsList: CertificationData[] = [
     issueDate: 'August 19, 2025',
     validUntil: 'August 19, 2027',
     certId: '102362864OCI25AICFA',
+    image: '/certs/oracle-oci-2025-ai-foundations-associate.png',
     isOfficial: true
   },
-  { name: 'AWS Certified Data Engineer Associate 2026', issuer: 'Udemy' },
-  { name: 'AI Agents Certification', issuer: 'IIT Jammu', isOfficial: true },
-  { name: 'Ultimate RAG Bootcamp — LangChain, LangGraph & LangSmith', issuer: 'Udemy' },
-  { name: 'Decoding DevOps – From Basics to Advanced with AI', issuer: 'Udemy' },
-  { name: 'The Complete Prompt Engineering for AI Bootcamp', issuer: 'Udemy' },
-  { name: 'Data Analyst: Professional Certificate in Data Analysis', issuer: 'Udemy' },
-  { name: 'SQL Boot Camp', issuer: 'Udemy' },
-  { name: 'The Git & GitHub Bootcamp', issuer: 'Udemy' }
+  { 
+    name: 'Ultimate RAG Bootcamp — LangChain, LangGraph & LangSmith', 
+    issuer: 'Udemy',
+    issueDate: 'May 9, 2026',
+    certId: 'UC-a0c06e27-d5d2-42fb-aa19-7fa19735c724',
+    verifyUrl: 'https://ude.my/UC-a0c06e27-d5d2-42fb-aa19-7fa19735c724',
+    image: '/certs/udemy-ultimate-rag-bootcamp.png',
+    isOfficial: true
+  },
+  { 
+    name: 'Decoding DevOps – From Basics to Advanced with AI', 
+    issuer: 'Udemy',
+    issueDate: 'May 18, 2026',
+    certId: 'UC-19805f82-9d1a-46da-a31f-367834509d70',
+    verifyUrl: 'https://ude.my/UC-19805f82-9d1a-46da-a31f-367834509d70',
+    image: '/certs/udemy-decoding-devops.png',
+    isOfficial: true
+  },
+  { 
+    name: 'The Complete Prompt Engineering for AI Bootcamp', 
+    issuer: 'Udemy',
+    issueDate: 'May 12, 2026',
+    certId: 'UC-58bb0dc4-b0a3-4187-a9f2-fa8122c18560',
+    verifyUrl: 'https://ude.my/UC-58bb0dc4-b0a3-4187-a9f2-fa8122c18560',
+    image: '/certs/udemy-prompt-engineering.png',
+    isOfficial: true
+  },
+  { 
+    name: 'Data Analyst: Professional Certificate in Data Analysis', 
+    issuer: 'Udemy',
+    issueDate: 'May 12, 2026',
+    certId: 'UC-ddc2ce06-16cd-4577-8c4e-ec206c079921',
+    verifyUrl: 'https://ude.my/UC-ddc2ce06-16cd-4577-8c4e-ec206c079921',
+    image: '/certs/udemy-data-analyst.png',
+    isOfficial: true
+  },
+  { 
+    name: 'The Git & GitHub Bootcamp', 
+    issuer: 'Udemy',
+    issueDate: 'May 12, 2026',
+    certId: 'UC-4dc9ca21-68b8-435e-9309-a375561700bc',
+    verifyUrl: 'https://ude.my/UC-4dc9ca21-68b8-435e-9309-a375561700bc',
+    image: '/certs/udemy-git-github.png',
+    isOfficial: true
+  },
+  { 
+    name: 'AWS Certified Data Engineer Associate 2026', 
+    issuer: 'Udemy',
+    issueDate: 'May 5, 2026',
+    certId: 'UC-29b3674f-a701-4c45-8216-c2c8204e3e9b',
+    verifyUrl: 'https://ude.my/UC-29b3674f-a701-4c45-8216-c2c8204e3e9b',
+    image: '/certs/udemy-aws-data-engineer.png',
+    isOfficial: true
+  },
+  { 
+    name: 'Artificial Intelligence (LLMs, GenAI, AI Agents) Certification', 
+    issuer: 'IIT Jammu',
+    issueDate: 'August 12, 2025',
+    certId: 'TEC/IIT/SS25/C/M1/0144',
+    image: '/certs/iit-jammu-ai-genai-internship.png',
+    isOfficial: true
+  },
+  { 
+    name: 'The Complete SQL Bootcamp (30 Hours)', 
+    issuer: 'Udemy',
+    issueDate: 'April 28, 2026',
+    certId: 'UC-27b8f277-b551-42df-9ff5-8f86ece3003b',
+    verifyUrl: 'https://ude.my/UC-27b8f277-b551-42df-9ff5-8f86ece3003b',
+    image: '/certs/udemy-sql-bootcamp.png',
+    isOfficial: true
+  },
+  { 
+    name: 'Blockchain in Supply Chain Management', 
+    issuer: 'Udemy',
+    issueDate: 'April 24, 2026',
+    certId: 'UC-9c8975ea-c5f2-4fa9-8bb2-f6b696c53347',
+    verifyUrl: 'https://ude.my/UC-9c8975ea-c5f2-4fa9-8bb2-f6b696c53347',
+    image: '/certs/udemy-blockchain-supply-chain.png',
+    isOfficial: true
+  },
+  { 
+    name: 'Full Stack Development Training Program', 
+    issuer: 'OctaNet Services',
+    issueDate: 'August 1, 2024',
+    image: '/certs/octanet-fullstack-training.png',
+    isOfficial: true
+  }
 ];
 
 export const LINKEDIN_CERTS_URL = 'https://www.linkedin.com/in/jagjeet-singh-dhillon-022b822b7/details/certifications/';

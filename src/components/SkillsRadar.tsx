@@ -6,7 +6,7 @@ import {
   LINKEDIN_CERTS_URL,
   CertificationData
 } from '../data';
-import { Award, GraduationCap, Layers, ExternalLink, Code, Flame, CheckCircle2, X, ShieldCheck } from 'lucide-react';
+import { Award, GraduationCap, Layers, ExternalLink, Code, Flame, CheckCircle2, X, ShieldCheck, Image as ImageIcon, Eye } from 'lucide-react';
 
 export default function SkillsRadar() {
   const [showBadgeModal, setShowBadgeModal] = useState(false);
@@ -70,8 +70,8 @@ export default function SkillsRadar() {
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="certs-grid">
-              {/* Show featured certs with rich metadata for official certifications */}
-              {certificationsList.slice(0, 6).map((cert, index) => (
+              {/* Show all certs with rich metadata and visual media popups */}
+              {certificationsList.map((cert, index) => (
                 <div 
                   key={index} 
                   onClick={() => cert.isOfficial && setSelectedCert(cert)}
@@ -101,8 +101,8 @@ export default function SkillsRadar() {
                           {cert.issuer}
                         </span>
                         {cert.isOfficial && (
-                          <span className="font-mono text-[9px] bg-amber-400/10 text-amber-400 border border-amber-400/30 px-1.5 py-0.5 rounded font-semibold uppercase tracking-wider">
-                            Verified
+                          <span className="font-mono text-[9px] bg-amber-400/10 text-amber-400 border border-amber-400/30 px-1.5 py-0.5 rounded font-semibold uppercase tracking-wider flex items-center gap-1">
+                            {cert.image && <ImageIcon size={10} />} Verified
                           </span>
                         )}
                       </div>
@@ -116,7 +116,7 @@ export default function SkillsRadar() {
                         <span>Issued: {cert.issueDate}</span>
                       )}
                       {cert.certId && (
-                        <span className="text-amber-300/80 font-medium">ID: {cert.certId}</span>
+                        <span className="text-amber-300/80 font-medium truncate max-w-[140px]">ID: {cert.certId}</span>
                       )}
                     </div>
                   )}
@@ -136,7 +136,7 @@ export default function SkillsRadar() {
                 </div>
                 <div className="min-w-0">
                   <span className="text-xs text-foreground font-semibold block leading-tight">
-                    View All 20+ Certifications
+                    View Complete Profile Credentials
                   </span>
                   <span className="text-[10px] text-muted-foreground/60 font-mono mt-0.5 block group-hover:text-white/60 transition-colors">
                     Opens LinkedIn →
@@ -291,23 +291,23 @@ export default function SkillsRadar() {
       {/* Interactive Official Certificate Lightbox Modal */}
       {selectedCert && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fade-in"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md animate-fade-in overflow-y-auto"
           onClick={() => setSelectedCert(null)}
         >
           <div 
-            className="relative w-full max-w-xl liquid-glass rounded-3xl border border-amber-500/40 bg-[#0a0e14]/95 p-6 md:p-8 space-y-6 shadow-2xl shadow-amber-500/20"
+            className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto liquid-glass rounded-3xl border border-amber-500/40 bg-[#0a0e14]/95 p-6 md:p-8 space-y-6 shadow-2xl shadow-amber-500/20 my-auto"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
               onClick={() => setSelectedCert(null)}
-              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/5 border border-white/10 hover:bg-white/20 flex items-center justify-center text-foreground transition-colors"
+              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/5 border border-white/10 hover:bg-white/20 flex items-center justify-center text-foreground transition-colors z-20"
             >
               <X size={18} />
             </button>
 
             {/* Header */}
-            <div className="text-center space-y-2">
+            <div className="text-center space-y-2 pt-2 md:pt-0">
               <span className="font-mono text-xs text-amber-400 uppercase tracking-widest font-semibold flex items-center justify-center gap-1.5">
                 <ShieldCheck size={15} /> Official Certified Credential
               </span>
@@ -320,18 +320,36 @@ export default function SkillsRadar() {
               <p className="font-mono text-xs text-muted-foreground">{selectedCert.issuer}</p>
             </div>
 
-            {/* Certificate Preview Card */}
-            <div className="relative w-full p-6 rounded-2xl bg-black/70 border border-amber-500/30 text-center space-y-3 shadow-inner">
-              <div className="w-12 h-12 mx-auto rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400">
-                <Award size={24} />
+            {/* High-Res Certificate Image or Fallback Card */}
+            {selectedCert.image ? (
+              <div className="relative w-full rounded-2xl overflow-hidden bg-black/80 border border-amber-500/30 shadow-xl group">
+                <img 
+                  src={selectedCert.image} 
+                  alt={selectedCert.name}
+                  className="w-full h-auto object-contain max-h-[420px] mx-auto rounded-2xl transition-transform duration-300 group-hover:scale-[1.01]"
+                />
+                <a 
+                  href={selectedCert.image} 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="absolute bottom-3 right-3 px-3 py-1.5 rounded-lg bg-black/80 border border-amber-400/40 text-amber-300 hover:bg-amber-400 hover:text-black font-mono text-[11px] font-semibold transition-all flex items-center gap-1.5 shadow-lg backdrop-blur-sm"
+                >
+                  <Eye size={13} /> Full Screen
+                </a>
               </div>
-              <span className="font-mono text-xs text-amber-300 font-semibold block uppercase tracking-wider">
-                {selectedCert.badge || selectedCert.name}
-              </span>
-              <p className="text-xs text-muted-foreground italic">
-                Recognized by {selectedCert.issuer} as Certified.
-              </p>
-            </div>
+            ) : (
+              <div className="relative w-full p-6 rounded-2xl bg-black/70 border border-amber-500/30 text-center space-y-3 shadow-inner">
+                <div className="w-12 h-12 mx-auto rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400">
+                  <Award size={24} />
+                </div>
+                <span className="font-mono text-xs text-amber-300 font-semibold block uppercase tracking-wider">
+                  {selectedCert.badge || selectedCert.name}
+                </span>
+                <p className="text-xs text-muted-foreground italic">
+                  Recognized by {selectedCert.issuer} as Certified.
+                </p>
+              </div>
+            )}
 
             {/* Certificate Metadata Table */}
             <div className="bg-white/5 border border-white/10 rounded-xl p-4 font-mono text-xs space-y-2.5 text-muted-foreground">
@@ -362,15 +380,25 @@ export default function SkillsRadar() {
             </div>
 
             {/* Action buttons */}
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-3">
               <a
-                href={LINKEDIN_CERTS_URL}
+                href={selectedCert.verifyUrl || LINKEDIN_CERTS_URL}
                 target="_blank"
                 rel="noreferrer"
                 className="flex-1 py-3 rounded-xl bg-amber-500 text-black font-mono text-xs font-bold hover:bg-amber-400 transition-colors flex items-center justify-center gap-2"
               >
-                Verify on LinkedIn <ExternalLink size={14} />
+                Verify Credential <ExternalLink size={14} />
               </a>
+              {selectedCert.image && (
+                <a
+                  href={selectedCert.image}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-5 py-3 rounded-xl bg-white/10 border border-white/20 text-foreground font-mono text-xs hover:bg-white/20 transition-colors flex items-center justify-center gap-2"
+                >
+                  <Eye size={14} /> View Original Image
+                </a>
+              )}
               <button
                 onClick={() => setSelectedCert(null)}
                 className="px-5 py-3 rounded-xl bg-white/5 border border-white/10 text-foreground font-mono text-xs hover:bg-white/10 transition-colors"

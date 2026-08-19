@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { experienceDataList } from '../data';
-import { Briefcase, Calendar, MapPin } from 'lucide-react';
+import { experienceDataList, ExperienceData } from '../data';
+import { Briefcase, Calendar, MapPin, ShieldCheck, ExternalLink, X, Eye } from 'lucide-react';
 
 export default function Experience() {
+  const [selectedExpCert, setSelectedExpCert] = useState<ExperienceData | null>(null);
+
   return (
     <section 
       id="experience" 
@@ -75,10 +77,103 @@ export default function Experience() {
                   </li>
                 ))}
               </ul>
+
+              {/* Certificate Button if available */}
+              {exp.certificateImage && (
+                <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between flex-wrap gap-3">
+                  <span className="font-mono text-xs text-emerald-400 font-semibold flex items-center gap-1.5">
+                    <ShieldCheck size={14} /> Official Internship Credential
+                  </span>
+                  <button
+                    onClick={() => setSelectedExpCert(exp)}
+                    className="px-3.5 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-300 hover:bg-amber-500 hover:text-black font-mono text-xs font-semibold transition-all flex items-center gap-1.5 shadow-sm"
+                  >
+                    <Eye size={13} /> View Certificate
+                  </button>
+                </div>
+              )}
             </div>
           </motion.div>
         ))}
       </div>
+
+      {/* Internship Certificate Lightbox Modal */}
+      {selectedExpCert && selectedExpCert.certificateImage && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md animate-fade-in overflow-y-auto"
+          onClick={() => setSelectedExpCert(null)}
+        >
+          <div 
+            className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto liquid-glass rounded-3xl border border-amber-500/40 bg-[#0a0e14]/95 p-6 md:p-8 space-y-6 shadow-2xl shadow-amber-500/20 my-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedExpCert(null)}
+              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/5 border border-white/10 hover:bg-white/20 flex items-center justify-center text-foreground transition-colors z-20"
+            >
+              <X size={18} />
+            </button>
+
+            {/* Header */}
+            <div className="text-center space-y-2 pt-2 md:pt-0">
+              <span className="font-mono text-xs text-amber-400 uppercase tracking-widest font-semibold flex items-center justify-center gap-1.5">
+                <ShieldCheck size={15} /> Verified Internship Completion Certificate
+              </span>
+              <h3 
+                className="text-2xl md:text-3xl font-normal text-foreground leading-snug"
+                style={{ fontFamily: "'Instrument Serif', serif" }}
+              >
+                {selectedExpCert.role}
+              </h3>
+              <p className="font-mono text-xs text-muted-foreground">{selectedExpCert.company} • {selectedExpCert.period}</p>
+            </div>
+
+            {/* Certificate Image */}
+            <div className="relative w-full rounded-2xl overflow-hidden bg-black/80 border border-amber-500/30 shadow-xl group">
+              <img 
+                src={selectedExpCert.certificateImage} 
+                alt={`${selectedExpCert.role} Certificate`}
+                className="w-full h-auto object-contain max-h-[420px] mx-auto rounded-2xl transition-transform duration-300 group-hover:scale-[1.01]"
+              />
+            </div>
+
+            {/* Certificate Details */}
+            <div className="bg-white/5 border border-white/10 rounded-xl p-4 font-mono text-xs space-y-2 text-muted-foreground">
+              {selectedExpCert.certificateId && (
+                <div className="flex justify-between border-b border-white/10 pb-2">
+                  <span>Certificate ID:</span>
+                  <span className="text-amber-400 font-bold select-all">{selectedExpCert.certificateId}</span>
+                </div>
+              )}
+              <div className="flex justify-between">
+                <span>Verification Status:</span>
+                <span className="text-emerald-400 font-semibold flex items-center gap-1">
+                  <ShieldCheck size={13} /> Official & Verified Internship
+                </span>
+              </div>
+            </div>
+
+            {/* Action buttons */}
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a
+                href={selectedExpCert.certificateImage}
+                target="_blank"
+                rel="noreferrer"
+                className="flex-1 py-3 rounded-xl bg-amber-500 text-black font-mono text-xs font-bold hover:bg-amber-400 transition-colors flex items-center justify-center gap-2"
+              >
+                Open Full Resolution <ExternalLink size={14} />
+              </a>
+              <button
+                onClick={() => setSelectedExpCert(null)}
+                className="px-5 py-3 rounded-xl bg-white/5 border border-white/10 text-foreground font-mono text-xs hover:bg-white/10 transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
